@@ -172,6 +172,9 @@
       const planes = {};
       let selectedPlane = null;
 
+      // const tileUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+      const tileUrl = "https://localhost:3000/{z}/{x}/{y}.png";
+
       // Update panel general info
       const updateGeneralInfo = () => {
         const el = document.getElementById("generalInfo");
@@ -347,9 +350,9 @@
       const center = [-34.92, 138.6];
       map = L.map("canvas").setView(center, 9);
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 12,
+        // attribution:
+        //   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }).addTo(map);
 
       // Setup a timer to poll from the server
