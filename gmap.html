@@ -39,6 +39,10 @@
         transition: transform 500ms linear;
       }
       .plane-icon__symbol {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         font-size: 12pt;
         line-height: 32px;
         width: 32px;
@@ -52,12 +56,19 @@
         color: #ff6b6b;
       }
       .plane-icon__label {
-        font-size: 6pt;
+        font-size: 8pt;
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
         color: black;
         text-shadow: white;
         -webkit-text-stroke: 1px #000000;
+        margin: 0;
+        padding: 0;
+        /* top: 0; */
+        /* position: absolute; */
       }
 
       /* Info panel block */
@@ -157,6 +168,7 @@
       </div>
       <div class="info-panel__content">
         <p id="generalInfo" class="info-panel__text"></p>
+        <p id="planeInfo" class="info-panel__text">Click on a plane for info</p>
       </div>
     </div>
 
@@ -234,7 +246,7 @@
                         style="transform: rotate(${plane.track ?? 0}deg);"
                     >
                         <i class="fa-solid fa-plane-up"></i>
-                        <p class="plane-icon__label">${newPlane.flight || "—"}</p>
+                        <p class="plane-icon__label">${plane.flight || "—"}</p>
                     </div>
                     `,
           className: "plane-icon",
@@ -349,7 +361,7 @@
       //   const center = [37.0, 13.0]
       const center = [-34.92, 138.6];
       map = L.map("canvas").setView(center, 9);
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      L.tileLayer(tileUrl, {
         maxZoom: 12,
         // attribution:
         //   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
